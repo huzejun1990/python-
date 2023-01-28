@@ -7,7 +7,6 @@
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
-
 class ScrapyReadbook101Pipeline:
 
     def open_spider(self,spider):
@@ -24,7 +23,8 @@ class ScrapyReadbook101Pipeline:
 from scrapy.utils.project import get_project_settings
 import pymysql
 
-
+# 解决No module named 'pymysql'问题
+# 使用命令pip install pymysql 安装pymysql 模块（在对应开发工具上 pycharm2022）
 
 class MysqlPipeline:
 
@@ -33,7 +33,7 @@ class MysqlPipeline:
         self.host = settings['DB_HOST']
         self.port = settings['DB_PORT']
         self.user = settings['DB_USER']
-        self.password = settings['DB_PASSWORD']
+        self.password = settings['DB_PASSWROD']
         self.name = settings['DB_NAME']
         self.charset = settings['DB_CHARSET']
 
@@ -53,13 +53,12 @@ class MysqlPipeline:
 
     def process_item(self, item, spider):
 
-        sql = 'insert into book(name,src) values ("{}","{}")'.format(item["name"],item["src"])
+        sql = 'insert into book(name,src) values("{}","{}")'.format(item['name'],item['src'])
 
         # 执行sql语句
         self.cursor.execute(sql)
         # 提交 commit
         self.conn.commit()
-
 
         return item
 

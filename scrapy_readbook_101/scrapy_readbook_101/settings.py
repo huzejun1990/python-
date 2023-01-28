@@ -61,12 +61,13 @@ NEWSPIDER_MODULE = 'scrapy_readbook_101.spiders'
 #}
 
 # 参数中一个端口号 一个是字符集 都要注意
-# DB_HOST = '192.168.1.62'
-DB_HOST = '192.168.1.111'
+DB_HOST = '192.168.1.62'
+# DB_HOST = '192.168.1.111'
+# DB_HOST = '127.0.0.1'
 #端口号是一个整数
 DB_PORT = 3306
 DB_USER = 'root'
-DB_PASSWORD = '123456'
+DB_PASSWROD = '123456'
 DB_NAME = 'spider01'
 # utf-8的-（杠）不允许写
 DB_CHARSET = 'utf8'
